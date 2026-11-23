@@ -148,7 +148,7 @@
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:paddingHorizontal="24dp"
-                android:text="Ver Producto"
+                android:text="Ver Inventario"
                 android:textAllCaps="false"
                 android:textColor="#082F5B"
                 android:textSize="18sp"
