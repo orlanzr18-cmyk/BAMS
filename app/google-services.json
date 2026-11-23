@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "111027355119",
+    "project_id": "bams-30596",
+    "storage_bucket": "bams-30596.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111027355119:android:a9d85b597ffeb2d3d30a1a",
+        "android_client_info": {
+          "package_name": "com.example.bams"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMc0APCouyiS4IVoyoy4GfFwoKiUBowaE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
