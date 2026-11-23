@@ -1,0 +1,26 @@
+type Usuario @table(key: "uid") {
+  uid: String! @default(expr: "auth.uid")
+  usuario: String!
+  correo: String!
+}
+
+type Cliente @table {
+  nombreCliente: String!
+}
+
+type Producto @table {
+  nombreProducto: String!
+  descripcionProducto: String
+  precioProducto: Float!
+  codigoBarra: String @unique
+}
+
+type Venta @table {
+  nombreVenta: String!
+  usuario: Usuario!
+  cliente: Cliente!
+  producto: Producto!
+  cantidad: Int!
+  precioHistorico: Float!
+  fecha: Timestamp! @default(expr: "request.time")
+}

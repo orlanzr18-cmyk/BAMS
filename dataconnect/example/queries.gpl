@@ -1,0 +1,39 @@
+query ListarProductos @auth(level: PUBLIC) {
+  productos(orderBy: { nombreProducto: ASC }) {
+    id
+    nombreProducto
+    descripcionProducto
+    precioProducto
+    codigoBarra
+  }
+}
+
+query BuscarProductoPorCodigo($codigoBarra: String!) @auth(level: PUBLIC) {
+  productos(where: { codigoBarra: { eq: $codigoBarra } }) {
+    id
+    nombreProducto
+    descripcionProducto
+    precioProducto
+    codigoBarra
+  }
+}
+
+query ListarClientes @auth(level: PUBLIC) {
+  clientes(orderBy: { nombreCliente: ASC }) {
+    id
+    nombreCliente
+  }
+}
+
+query ListarVentas @auth(level: PUBLIC) {
+  ventas(orderBy: { fecha: DESC }) {
+    id
+    nombreVenta
+    cantidad
+    precioHistorico
+    fecha
+    usuario { usuario }
+    cliente { nombreCliente }
+    producto { nombreProducto }
+  }
+}
