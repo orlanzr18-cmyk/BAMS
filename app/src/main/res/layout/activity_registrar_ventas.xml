@@ -1,247 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F8FE"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:padding="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <LinearLayout
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:contentDescription="BAMS"
+            android:scaleType="fitStart"
+            android:src="@mipmap/logo" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:backgroundTint="#E8EFF8"
+            android:text="← Volver"
+            android:textAllCaps="false"
+            android:textColor="#072C5A"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ventas · Registrar nueva venta"
+        android:textColor="#5A6F8F"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Cliente"
+        android:textColor="#072C5A"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etCliente"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="6dp"
+        android:background="#FFFFFF"
+        android:hint="Nombre del cliente"
+        android:inputType="textPersonName"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#072C5A"
+        android:textColorHint="#5A6F8F"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Productos a vender"
+        android:textColor="#072C5A"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <GridView
+            android:id="@+id/gvProductosVenta"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:contentDescription="BAMS"
-                android:scaleType="fitStart"
-                app:srcCompat="@mipmap/logo" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnVolver"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="← Volver"
-                android:textAllCaps="false"
-                android:textColor="#072C5A"
-                android:textStyle="bold"
-                app:backgroundTint="#E8EFF8"
-                app:cornerRadius="24dp" />
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:horizontalSpacing="0dp"
+            android:numColumns="1"
+            android:verticalSpacing="1dp" />
 
         <TextView
+            android:id="@+id/tvSinProductos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Aún no has agregado productos"
+            android:textColor="#5A6F8F"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#072C5A"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTotalVenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ventas · Registrar nueva venta"
-            android:textColor="#5A6F8F"
-            android:textSize="15sp"
+            android:text="L 0.00"
+            android:textColor="#5EC8F2"
+            android:textSize="20sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:letterSpacing="0.05"
-            android:text="Producto"
-            android:textColor="#072C5A"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <Spinner
-                android:id="@+id/spProducto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:letterSpacing="0.05"
-            android:text="Cliente"
-            android:textColor="#072C5A"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/etCliente"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="Nombre del cliente"
-                android:inputType="textPersonName"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:letterSpacing="0.05"
-            android:text="Cantidad"
-            android:textColor="#072C5A"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/etCantidad"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="0"
-                android:inputType="number"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:letterSpacing="0.05"
-            android:text="Precio unitario"
-            android:textColor="#072C5A"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/etPrecio"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:enabled="false"
-                android:hint="L 0.00"
-                android:inputType="text"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:letterSpacing="0.05"
-            android:text="Total"
-            android:textColor="#072C5A"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/etTotal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:enabled="false"
-                android:hint="L 0.00"
-                android:inputType="text"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRegistrarVenta"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="24dp"
-            android:letterSpacing="0.08"
-            android:text="Registrar venta"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:backgroundTint="#00A8E8"
-            app:cornerRadius="28dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCancelar"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginTop="12dp"
-            android:letterSpacing="0.08"
-            android:text="Cancelar"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:backgroundTint="#072C5A"
-            app:cornerRadius="28dp" />
     </LinearLayout>
-</ScrollView>
+
+    <Button
+        android:id="@+id/btnAgregarProducto"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#00A8E8"
+        android:text="Agregar producto"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnRegistrarVenta"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#072C5A"
+        android:text="Registrar venta"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#E8EFF8"
+        android:text="Cancelar"
+        android:textAllCaps="false"
+        android:textColor="#072C5A"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+</LinearLayout>
