@@ -1,0 +1,65 @@
+mutation CrearProducto(
+  $nombreProducto: String!
+  $descripcionProducto: String
+  $precioProducto: Float!
+  $codigoBarra: String
+) @auth(level: PUBLIC) {
+  producto_insert(
+    data: {
+      nombreProducto: $nombreProducto
+      descripcionProducto: $descripcionProducto
+      precioProducto: $precioProducto
+      codigoBarra: $codigoBarra
+    }
+  )
+}
+
+mutation ActualizarProducto(
+  $id: UUID!
+  $nombreProducto: String!
+  $descripcionProducto: String
+  $precioProducto: Float!
+  $codigoBarra: String
+) @auth(level: PUBLIC) {
+  producto_update(
+    id: $id
+    data: {
+      nombreProducto: $nombreProducto
+      descripcionProducto: $descripcionProducto
+      precioProducto: $precioProducto
+      codigoBarra: $codigoBarra
+    }
+  )
+}
+
+mutation EliminarProducto($id: UUID!) @auth(level: PUBLIC) {
+  producto_delete(id: $id)
+}
+
+mutation CrearCliente($nombreCliente: String!) @auth(level: PUBLIC) {
+  cliente_insert(data: { nombreCliente: $nombreCliente })
+}
+
+mutation CrearUsuario($usuario: String!, $correo: String!)
+@auth(level: USER) {
+  usuario_insert(data: { usuario: $usuario, correo: $correo })
+}
+
+mutation CrearVenta(
+  $nombreVenta: String!
+  $clienteId: UUID!
+  $productoId: UUID!
+  $cantidad: Int!
+  $precioHistorico: Float!
+) @auth(level: USER) {
+  venta_insert(
+    data: {
+      nombreVenta: $nombreVenta
+      usuarioUid_expr: "auth.uid"
+      clienteId: $clienteId
+      productoId: $productoId
+      cantidad: $cantidad
+      precioHistorico: $precioHistorico
+    }
+  )
+}
