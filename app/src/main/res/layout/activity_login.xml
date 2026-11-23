@@ -36,7 +36,8 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="Logo de BAMS"
                 android:scaleType="fitCenter"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo"
+                app:srcCompat="@mipmap/logo" />
 
             <TextView
                 android:id="@+id/textView"
