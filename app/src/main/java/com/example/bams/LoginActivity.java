@@ -2,7 +2,6 @@ package com.example.bams;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -29,5 +28,8 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         });
+
+        Button btnSalir = findViewById(R.id.btnsalir);
+        btnSalir.setOnClickListener(v -> finishAffinity());
     }
 }
