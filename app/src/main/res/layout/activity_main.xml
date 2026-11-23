@@ -148,7 +148,7 @@
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:paddingHorizontal="24dp"
-                android:text="Producto"
+                android:text="Ver Producto"
                 android:textAllCaps="false"
                 android:textColor="#082F5B"
                 android:textSize="18sp"
