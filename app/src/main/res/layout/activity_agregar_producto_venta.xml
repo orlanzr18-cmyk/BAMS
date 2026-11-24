@@ -65,7 +65,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/etBuscar"
+                android:id="@+id/txtBuscar"
                 android:layout_width="0dp"
                 android:layout_height="52dp"
                 android:layout_weight="1"
@@ -110,15 +110,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvMarcaProducto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Marca: -"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp" />
-
-            <TextView
                 android:id="@+id/tvStockProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,7 +129,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etCantidad"
+            android:id="@+id/txtCantidad"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="6dp"
@@ -161,7 +152,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etPrecio"
+            android:id="@+id/txtprecio"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="6dp"
@@ -185,7 +176,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etTotal"
+            android:id="@+id/txtTotal"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="6dp"

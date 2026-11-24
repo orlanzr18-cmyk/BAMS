@@ -50,17 +50,19 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:letterSpacing="0.05"
-            android:text="Seleccionar producto"
+            android:text="Codigo Barra"
             android:textColor="#072C5A"
             android:textSize="14sp"
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/txtCodigoBarra"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="6dp"
@@ -70,13 +72,22 @@
             app:strokeColor="#D9E4F2"
             app:strokeWidth="1dp">
 
-            <Spinner
-                android:id="@+id/spProducto"
+            <EditText
+                android:id="@+id/txtCodigoBarra"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp" />
+                android:background="@null"
+                android:hint="Escanea el código de barras"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#072C5A"
+                android:textColorHint="#5A6F8F"
+                android:textSize="16sp" />
         </com.google.android.material.card.MaterialCardView>
+
 
         <TextView
             android:layout_width="match_parent"
@@ -89,6 +100,7 @@
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="6dp"
@@ -99,7 +111,7 @@
             app:strokeWidth="1dp">
 
             <EditText
-                android:id="@+id/etNombre"
+                android:id="@+id/txtNombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -112,6 +124,7 @@
                 android:textSize="16sp" />
         </com.google.android.material.card.MaterialCardView>
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,6 +136,7 @@
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/txtMarca"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="6dp"
@@ -133,7 +147,7 @@
             app:strokeWidth="1dp">
 
             <EditText
-                android:id="@+id/etMarca"
+                android:id="@+id/txtDesc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -146,6 +160,7 @@
                 android:textSize="16sp" />
         </com.google.android.material.card.MaterialCardView>
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -157,6 +172,7 @@
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/txtPrecio"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="6dp"
@@ -167,7 +183,7 @@
             app:strokeWidth="1dp">
 
             <EditText
-                android:id="@+id/etPrecio"
+                android:id="@+id/txtprecio"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -180,6 +196,7 @@
                 android:textSize="16sp" />
         </com.google.android.material.card.MaterialCardView>
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -191,6 +208,7 @@
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/txtStock"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="6dp"
@@ -201,7 +219,7 @@
             app:strokeWidth="1dp">
 
             <EditText
-                android:id="@+id/etStock"
+                android:id="@+id/txtstock"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
@@ -213,6 +231,7 @@
                 android:textColorHint="#5A6F8F"
                 android:textSize="16sp" />
         </com.google.android.material.card.MaterialCardView>
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGuardarCambios"
