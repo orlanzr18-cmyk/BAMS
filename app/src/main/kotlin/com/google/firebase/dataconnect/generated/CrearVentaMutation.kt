@@ -47,6 +47,8 @@ public interface CrearVentaMutation :
   
     val venta_insert: VentaKey,
   
+    val inventario_update: InventarioKey?,
+  
   ) {
     
     
