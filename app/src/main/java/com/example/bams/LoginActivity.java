@@ -17,8 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
-    private TextInputEditText etCorreo;
-    private TextInputEditText etPassword;
+    private TextInputEditText txtCorreo;
+    private TextInputEditText txtPassword;
     private Button btnIniciarSesion;
 
     @Override
@@ -34,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        etCorreo = findViewById(R.id.editTextText);
-        etPassword = findViewById(R.id.editTextTextPassword);
+        txtCorreo = findViewById(R.id.editTextText);
+        txtPassword = findViewById(R.id.editTextTextPassword);
         btnIniciarSesion = findViewById(R.id.btniniciarsesion);
         Button btnSalir = findViewById(R.id.btnsalir);
 
@@ -49,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void iniciarSesion() {
-        String correo = etCorreo.getText() == null ? "" : etCorreo.getText().toString().trim();
-        String password = etPassword.getText() == null ? "" : etPassword.getText().toString();
+        String correo = txtCorreo.getText() == null ? "" : txtCorreo.getText().toString().trim();
+        String password = txtPassword.getText() == null ? "" : txtPassword.getText().toString();
 
         if (correo.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Ingresa tu correo y contraseña", Toast.LENGTH_SHORT).show();
