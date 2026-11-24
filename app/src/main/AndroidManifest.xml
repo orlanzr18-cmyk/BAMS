@@ -26,6 +26,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Inventario"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".Registrar_Ventas"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
