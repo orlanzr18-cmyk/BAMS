@@ -70,23 +70,7 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/txtCodigoBarra"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="Escanea el código de barras"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:maxLines="1"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
+            app:strokeWidth="1dp"/>
 
 
         <TextView
@@ -108,21 +92,7 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/txtNombre"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="Nombre del producto"
-                android:inputType="textCapWords"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
+            app:strokeWidth="1dp"/>
 
 
         <TextView
@@ -130,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:letterSpacing="0.05"
-            android:text="Marca"
+            android:text="Descripción"
             android:textColor="#072C5A"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -144,21 +114,7 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/txtDesc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="Marca"
-                android:inputType="textCapWords"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
+            app:strokeWidth="1dp"/>
 
 
         <TextView
@@ -180,21 +136,7 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/txtprecio"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="L 0.00"
-                android:inputType="numberDecimal"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
+            app:strokeWidth="1dp"/>
 
 
         <TextView
@@ -216,21 +158,7 @@
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp">
-
-            <EditText
-                android:id="@+id/txtstock"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="0"
-                android:inputType="number"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#072C5A"
-                android:textColorHint="#5A6F8F"
-                android:textSize="16sp" />
-        </com.google.android.material.card.MaterialCardView>
+            app:strokeWidth="1dp"/>
 
 
         <com.google.android.material.button.MaterialButton
