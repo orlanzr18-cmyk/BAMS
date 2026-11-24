@@ -51,7 +51,7 @@ mutation CrearVenta(
   $productoId: UUID!
   $cantidad: Int!
   $precioHistorico: Float!
-) @auth(level: USER) {
+) @auth(level: USER) @transaction {
   venta_insert(
     data: {
       nombreVenta: $nombreVenta
@@ -61,5 +61,22 @@ mutation CrearVenta(
       cantidad: $cantidad
       precioHistorico: $precioHistorico
     }
+  )
+  inventario_update(
+    first: { where: { producto: { id: { eq: $productoId } } } }
+    data: { cantidad_update: { dec: $cantidad } }
+  )
+}
+
+mutation CrearInventario($productoId: UUID!, $cantidad: Int!)
+@auth(level: PUBLIC) {
+  inventario_insert(data: { productoId: $productoId, cantidad: $cantidad })
+}
+
+mutation AjustarInventario($productoId: UUID!, $cantidad: Int!)
+@auth(level: PUBLIC) {
+  inventario_update(
+    first: { where: { producto: { id: { eq: $productoId } } } }
+    data: { cantidad: $cantidad }
   )
 }

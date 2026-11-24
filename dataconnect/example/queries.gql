@@ -37,3 +37,11 @@ query ListarVentas @auth(level: PUBLIC) {
     producto { nombreProducto }
   }
 }
+
+query ListarInventario @auth(level: PUBLIC) {
+  inventarios {
+    id
+    cantidad
+    producto { id nombreProducto codigoBarra }
+  }
+}
