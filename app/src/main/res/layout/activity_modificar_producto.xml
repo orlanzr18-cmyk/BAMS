@@ -61,17 +61,17 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/txtCodigoBarra"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp"/>
 
+        <EditText
+            android:id="@+id/txtCodigoBarras"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Escaner de Codigo de Barras"
+            android:inputType="number"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -83,17 +83,17 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
+
+        <EditText
             android:id="@+id/txtNombre"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp"/>
-
+            android:layout_height="52dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Nombre de producto"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -105,17 +105,17 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/txtMarca"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp"/>
 
+        <EditText
+            android:id="@+id/txtDesc"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Descripción del producto"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -127,17 +127,17 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
+
+        <EditText
             android:id="@+id/txtPrecio"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp"/>
-
+            android:layout_height="52dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Precio del producto"
+            android:inputType="numberDecimal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -149,17 +149,17 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
+
+        <EditText
             android:id="@+id/txtStock"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="6dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#D9E4F2"
-            app:strokeWidth="1dp"/>
-
+            android:layout_height="52dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Stock del producto"
+            android:inputType="number"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGuardarCambios"
