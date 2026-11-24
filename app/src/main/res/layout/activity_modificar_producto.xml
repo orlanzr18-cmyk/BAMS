@@ -63,13 +63,13 @@
 
 
         <EditText
-            android:id="@+id/txtCodigoBarras"
+            android:id="@+id/txtcodigo"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:background="#FFFFFF"
             android:ems="10"
-            android:hint="Escaner de Codigo de Barras"
-            android:inputType="number"
+            android:hint="Codigo de Barras"
+            android:inputType="text"
             android:paddingStart="16dp"
             android:paddingEnd="16dp" />
 
