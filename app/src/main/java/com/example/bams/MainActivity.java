@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnCerrarSesion).setOnClickListener(v ->
                 mostrarDialogoCerrarSesion());
 
+        // Botón Inventario/Producto -> abre la pantalla de inventario
+        findViewById(R.id.btnProducto).setOnClickListener(v ->
+                startActivity(new Intent(MainActivity.this, Inventario.class)));
+
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
