@@ -8,6 +8,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTitle("Cerrar sesión")
                 .setMessage("¿Estás seguro de que quieres cerrar sesión?")
                 .setPositiveButton("Sí", (dialog, which) -> {
+                    FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
