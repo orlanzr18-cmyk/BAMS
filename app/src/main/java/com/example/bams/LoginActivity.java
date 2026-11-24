@@ -42,10 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         btnIniciarSesion.setOnClickListener(v -> iniciarSesion());
         btnSalir.setOnClickListener(v -> finishAffinity());
 
-        // Si ya hay una sesión abierta, entra directo
-        if (auth.getCurrentUser() != null) {
-            irAlMenu();
-        }
+        // Cada vez que se abre la app se pide iniciar sesión de nuevo
+        auth.signOut();
     }
 
     private void iniciarSesion() {
