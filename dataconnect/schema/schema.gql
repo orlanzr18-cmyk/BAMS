@@ -24,3 +24,8 @@ type Venta @table {
   precioHistorico: Float!
   fecha: Timestamp! @default(expr: "request.time")
 }
+
+type Inventario @table {
+  producto: Producto! @unique
+  cantidad: Int!
+}

@@ -21,9 +21,13 @@ public interface ExampleConnector : com.google.firebase.dataconnect.generated.Ge
   
     public val actualizarProducto: ActualizarProductoMutation
   
+    public val ajustarInventario: AjustarInventarioMutation
+  
     public val buscarProductoPorCodigo: BuscarProductoPorCodigoQuery
   
     public val crearCliente: CrearClienteMutation
+  
+    public val crearInventario: CrearInventarioMutation
   
     public val crearProducto: CrearProductoMutation
   
@@ -34,6 +38,8 @@ public interface ExampleConnector : com.google.firebase.dataconnect.generated.Ge
     public val eliminarProducto: EliminarProductoMutation
   
     public val listarClientes: ListarClientesQuery
+  
+    public val listarInventario: ListarInventarioQuery
   
     public val listarProductos: ListarProductosQuery
   
@@ -97,12 +103,20 @@ private class ExampleConnectorImpl(
       ActualizarProductoMutationImpl(this)
     }
   
+    override val ajustarInventario by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      AjustarInventarioMutationImpl(this)
+    }
+  
     override val buscarProductoPorCodigo by lazy(LazyThreadSafetyMode.PUBLICATION) {
       BuscarProductoPorCodigoQueryImpl(this)
     }
   
     override val crearCliente by lazy(LazyThreadSafetyMode.PUBLICATION) {
       CrearClienteMutationImpl(this)
+    }
+  
+    override val crearInventario by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      CrearInventarioMutationImpl(this)
     }
   
     override val crearProducto by lazy(LazyThreadSafetyMode.PUBLICATION) {
@@ -125,6 +139,10 @@ private class ExampleConnectorImpl(
       ListarClientesQueryImpl(this)
     }
   
+    override val listarInventario by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      ListarInventarioQueryImpl(this)
+    }
+  
     override val listarProductos by lazy(LazyThreadSafetyMode.PUBLICATION) {
       ListarProductosQueryImpl(this)
     }
@@ -142,7 +160,9 @@ private class ExampleConnectorImpl(
   override fun mutations(): List<com.google.firebase.dataconnect.generated.GeneratedMutation<ExampleConnector, *, *>> =
     listOf(
       actualizarProducto,
+        ajustarInventario,
         crearCliente,
+        crearInventario,
         crearProducto,
         crearUsuario,
         crearVenta,
@@ -155,6 +175,7 @@ private class ExampleConnectorImpl(
     listOf(
       buscarProductoPorCodigo,
         listarClientes,
+        listarInventario,
         listarProductos,
         listarVentas,
         
@@ -307,6 +328,21 @@ private class ActualizarProductoMutationImpl(
   )
 
 
+private class AjustarInventarioMutationImpl(
+  connector: ExampleConnector
+):
+  AjustarInventarioMutation,
+  ExampleConnectorGeneratedMutationImpl<
+      AjustarInventarioMutation.Data,
+      AjustarInventarioMutation.Variables
+  >(
+    connector,
+    AjustarInventarioMutation.Companion.operationName,
+    AjustarInventarioMutation.Companion.dataDeserializer,
+    AjustarInventarioMutation.Companion.variablesSerializer,
+  )
+
+
 private class BuscarProductoPorCodigoQueryImpl(
   connector: ExampleConnector
 ):
@@ -334,6 +370,21 @@ private class CrearClienteMutationImpl(
     CrearClienteMutation.Companion.operationName,
     CrearClienteMutation.Companion.dataDeserializer,
     CrearClienteMutation.Companion.variablesSerializer,
+  )
+
+
+private class CrearInventarioMutationImpl(
+  connector: ExampleConnector
+):
+  CrearInventarioMutation,
+  ExampleConnectorGeneratedMutationImpl<
+      CrearInventarioMutation.Data,
+      CrearInventarioMutation.Variables
+  >(
+    connector,
+    CrearInventarioMutation.Companion.operationName,
+    CrearInventarioMutation.Companion.dataDeserializer,
+    CrearInventarioMutation.Companion.variablesSerializer,
   )
 
 
@@ -409,6 +460,21 @@ private class ListarClientesQueryImpl(
     ListarClientesQuery.Companion.operationName,
     ListarClientesQuery.Companion.dataDeserializer,
     ListarClientesQuery.Companion.variablesSerializer,
+  )
+
+
+private class ListarInventarioQueryImpl(
+  connector: ExampleConnector
+):
+  ListarInventarioQuery,
+  ExampleConnectorGeneratedQueryImpl<
+      ListarInventarioQuery.Data,
+      Unit
+  >(
+    connector,
+    ListarInventarioQuery.Companion.operationName,
+    ListarInventarioQuery.Companion.dataDeserializer,
+    ListarInventarioQuery.Companion.variablesSerializer,
   )
 
 
