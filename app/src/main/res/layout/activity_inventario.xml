@@ -10,6 +10,23 @@
     android:fitsSystemWindows="true"
     tools:context=".InventarioActivity">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVolver2"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="← Volver"
+        android:textAllCaps="false"
+        android:textColor="#072C5A"
+        android:textStyle="bold"
+        app:backgroundTint="#E8EFF8"
+        app:cornerRadius="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvTituloInventario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.828"
+        app:layout_constraintStart_toEndOf="@+id/imgLogoBams"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
     <ImageView
         android:id="@+id/imgLogoBams"
         android:layout_width="140dp"
@@ -88,14 +105,6 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:text="Descripción"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:text="Marca"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp"
                         android:textStyle="bold" />
