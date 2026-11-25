@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,5 +47,13 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
                 .show();
+    }
+
+    public void abrirRegistrarVenta(View view) {
+        startActivity(new Intent(MainActivity.this, Registrar_Ventas.class));
+    }
+
+    public void abrirVerVentas(View view) {
+        startActivity(new Intent(MainActivity.this, Ver_Ventas.class));
     }
 }
