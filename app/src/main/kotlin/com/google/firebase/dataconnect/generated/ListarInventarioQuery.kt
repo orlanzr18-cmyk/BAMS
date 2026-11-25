@@ -38,7 +38,7 @@ public interface ListarInventarioQuery :
         @kotlinx.serialization.Serializable
   public data class InventariosItem(
   
-    val id: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
+    val id: Int,
   
     val cantidad: Int,
   
@@ -50,7 +50,7 @@ public interface ListarInventarioQuery :
         @kotlinx.serialization.Serializable
   public data class Producto(
   
-    val id: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
+    val id: Int,
   
     val nombreProducto: String,
   

@@ -27,13 +27,9 @@ public interface CrearVentaMutation :
   
     val nombreVenta: String,
   
-    val clienteId: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
+    val clienteId: Int,
   
-    val productoId: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
-  
-    val cantidad: Int,
-  
-    val precioHistorico: Double,
+    val total: Double,
   
   ) {
     
@@ -46,8 +42,6 @@ public interface CrearVentaMutation :
   public data class Data(
   
     val venta_insert: VentaKey,
-  
-    val inventario_update: InventarioKey?,
   
   ) {
     
@@ -68,7 +62,7 @@ public interface CrearVentaMutation :
 
 public fun CrearVentaMutation.ref(
   
-    nombreVenta: String,clienteId: java.util.UUID,productoId: java.util.UUID,cantidad: Int,precioHistorico: Double,
+    nombreVenta: String,clienteId: Int,total: Double,
 
   
   
@@ -79,7 +73,7 @@ public fun CrearVentaMutation.ref(
   ref(
     
       CrearVentaMutation.Variables(
-        nombreVenta=nombreVenta,clienteId=clienteId,productoId=productoId,cantidad=cantidad,precioHistorico=precioHistorico,
+        nombreVenta=nombreVenta,clienteId=clienteId,total=total,
   
       )
     
@@ -89,7 +83,7 @@ public suspend fun CrearVentaMutation.execute(
 
   
     
-      nombreVenta: String,clienteId: java.util.UUID,productoId: java.util.UUID,cantidad: Int,precioHistorico: Double,
+      nombreVenta: String,clienteId: Int,total: Double,
 
   
 
@@ -99,7 +93,7 @@ public suspend fun CrearVentaMutation.execute(
   > =
   ref(
     
-      nombreVenta=nombreVenta,clienteId=clienteId,productoId=productoId,cantidad=cantidad,precioHistorico=precioHistorico,
+      nombreVenta=nombreVenta,clienteId=clienteId,total=total,
   
     
   ).execute()

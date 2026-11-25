@@ -15,7 +15,7 @@ mutation CrearProducto(
 }
 
 mutation ActualizarProducto(
-  $id: UUID!
+  $id: Int!
   $nombreProducto: String!
   $descripcionProducto: String
   $precioProducto: Float!
@@ -32,7 +32,7 @@ mutation ActualizarProducto(
   )
 }
 
-mutation EliminarProducto($id: UUID!) @auth(level: PUBLIC) {
+mutation EliminarProducto($id: Int!) @auth(level: PUBLIC) {
   producto_delete(id: $id)
 }
 
@@ -45,18 +45,43 @@ mutation CrearUsuario($usuario: String!, $correo: String!)
   usuario_insert(data: { usuario: $usuario, correo: $correo })
 }
 
+mutation CrearInventario($productoId: Int!, $cantidad: Int!)
+@auth(level: PUBLIC) {
+  inventario_insert(data: { productoId: $productoId, cantidad: $cantidad })
+}
+
+mutation AjustarInventario($productoId: Int!, $cantidad: Int!)
+@auth(level: PUBLIC) {
+  inventario_update(
+    first: { where: { producto: { id: { eq: $productoId } } } }
+    data: { cantidad: $cantidad }
+  )
+}
+
 mutation CrearVenta(
   $nombreVenta: String!
-  $clienteId: UUID!
-  $productoId: UUID!
-  $cantidad: Int!
-  $precioHistorico: Float!
-) @auth(level: USER) @transaction {
+  $clienteId: Int!
+  $total: Float!
+) @auth(level: USER) {
   venta_insert(
     data: {
       nombreVenta: $nombreVenta
       usuarioUid_expr: "auth.uid"
       clienteId: $clienteId
+      total: $total
+    }
+  )
+}
+
+mutation AgregarDetalleVenta(
+  $ventaId: Int!
+  $productoId: Int!
+  $cantidad: Int!
+  $precioHistorico: Float!
+) @auth(level: USER) @transaction {
+  detalleVenta_insert(
+    data: {
+      ventaId: $ventaId
       productoId: $productoId
       cantidad: $cantidad
       precioHistorico: $precioHistorico
@@ -65,18 +90,5 @@ mutation CrearVenta(
   inventario_update(
     first: { where: { producto: { id: { eq: $productoId } } } }
     data: { cantidad_update: { dec: $cantidad } }
-  )
-}
-
-mutation CrearInventario($productoId: UUID!, $cantidad: Int!)
-@auth(level: PUBLIC) {
-  inventario_insert(data: { productoId: $productoId, cantidad: $cantidad })
-}
-
-mutation AjustarInventario($productoId: UUID!, $cantidad: Int!)
-@auth(level: PUBLIC) {
-  inventario_update(
-    first: { where: { producto: { id: { eq: $productoId } } } }
-    data: { cantidad: $cantidad }
   )
 }

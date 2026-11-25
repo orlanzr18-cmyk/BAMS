@@ -4,28 +4,38 @@ type Usuario @table(key: "uid") {
   correo: String!
 }
 
-type Cliente @table {
+type Cliente @table(key: "id") {
+  id: Int! @col(dataType: "serial")
   nombreCliente: String!
 }
 
-type Producto @table {
+type Producto @table(key: "id") {
+  id: Int! @col(dataType: "serial")
   nombreProducto: String!
   descripcionProducto: String
   precioProducto: Float!
   codigoBarra: String @unique
 }
 
-type Venta @table {
+type Inventario @table(key: "id") {
+  id: Int! @col(dataType: "serial")
+  producto: Producto! @unique
+  cantidad: Int!
+}
+
+type Venta @table(key: "id") {
+  id: Int! @col(dataType: "serial")
   nombreVenta: String!
   usuario: Usuario!
   cliente: Cliente!
-  producto: Producto!
-  cantidad: Int!
-  precioHistorico: Float!
+  total: Float!
   fecha: Timestamp! @default(expr: "request.time")
 }
 
-type Inventario @table {
-  producto: Producto! @unique
+type DetalleVenta @table(key: "id") {
+  id: Int! @col(dataType: "serial")
+  venta: Venta!
+  producto: Producto!
   cantidad: Int!
+  precioHistorico: Float!
 }

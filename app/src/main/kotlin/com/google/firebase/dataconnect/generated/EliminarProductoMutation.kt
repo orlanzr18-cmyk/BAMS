@@ -25,7 +25,7 @@ public interface EliminarProductoMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val id: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
+    val id: Int,
   
   ) {
     
@@ -58,7 +58,7 @@ public interface EliminarProductoMutation :
 
 public fun EliminarProductoMutation.ref(
   
-    id: java.util.UUID,
+    id: Int,
 
   
   
@@ -79,7 +79,7 @@ public suspend fun EliminarProductoMutation.execute(
 
   
     
-      id: java.util.UUID,
+      id: Int,
 
   
 

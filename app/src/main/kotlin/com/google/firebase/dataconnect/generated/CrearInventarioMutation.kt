@@ -25,7 +25,7 @@ public interface CrearInventarioMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val productoId: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
+    val productoId: Int,
   
     val cantidad: Int,
   
@@ -60,7 +60,7 @@ public interface CrearInventarioMutation :
 
 public fun CrearInventarioMutation.ref(
   
-    productoId: java.util.UUID,cantidad: Int,
+    productoId: Int,cantidad: Int,
 
   
   
@@ -81,7 +81,7 @@ public suspend fun CrearInventarioMutation.execute(
 
   
     
-      productoId: java.util.UUID,cantidad: Int,
+      productoId: Int,cantidad: Int,
 
   
 

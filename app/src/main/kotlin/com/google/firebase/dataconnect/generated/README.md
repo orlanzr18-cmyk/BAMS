@@ -2,7 +2,7 @@
 
 This Kotlin package provides a type-safe library
 for the Firebase Data Connect connector named `example`,
-with service ID `bams-30596-2-service`
+with service ID `bams-be47a-3-service`
 hosted in `us-east4`.
 
 To use this package, it is typical to add the following imports
@@ -80,9 +80,9 @@ val connector: ExampleConnector = ExampleConnector.getInstance(
 ### ExampleConnector - Query and Mutation Properties
 
 The `example` Data Connect connector defines
-5 queries and
-8 mutations,
-a total of 13 operations.
+6 queries and
+9 mutations,
+a total of 15 operations.
 Each of these operations is exposed
 as a property of [ExampleConnector].
 
@@ -221,14 +221,14 @@ last argument of the `execute()` method.
 If a mutation has _required_ variables then they must be specified as
 arguments to the `execute()` method.
 
-For example, the "CrearVenta" mutation has 5 required variables ("nombreVenta", "clienteId", "productoId", "cantidad", and "precioHistorico")
-and can be executed via the [ExampleConnector.crearVenta]
+For example, the "AgregarDetalleVenta" mutation has 4 required variables ("ventaId", "productoId", "cantidad", and "precioHistorico")
+and can be executed via the [ExampleConnector.agregarDetalleVenta]
 property as follows:
 
 ```kotlin
 val connector = ExampleConnector.instance
-val mutationResult = connector.crearVenta.execute(nombreVenta="baz", clienteId=java.util.UUID.randomUUID(), productoId=java.util.UUID.randomUUID(), cantidad=7072, precioHistorico=1542.66)
-println("CrearVenta mutation returned: ${mutationResult.data}")
+val mutationResult = connector.agregarDetalleVenta.execute(ventaId=8842, productoId=7986, cantidad=7072, precioHistorico=1542.66)
+println("AgregarDetalleVenta mutation returned: ${mutationResult.data}")
 ```
 
 

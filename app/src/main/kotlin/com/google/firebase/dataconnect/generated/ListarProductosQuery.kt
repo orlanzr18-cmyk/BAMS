@@ -38,7 +38,7 @@ public interface ListarProductosQuery :
         @kotlinx.serialization.Serializable
   public data class ProductosItem(
   
-    val id: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
+    val id: Int,
   
     val nombreProducto: String,
   

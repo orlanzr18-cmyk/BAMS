@@ -1,13 +1,13 @@
 specVersion: "v1"
-serviceId: "bams-30596-2-service"
+serviceId: "bams-be47a-3-service"
 location: "us-east4"
 schemas:
   - source: "./schema"
     datasource:
       postgresql:
-        database: "bams-30596-2-database"
+        database: "bams-be47a-3-service"
         cloudSql:
-          instanceId: "bams-30596-instance"
+          instanceId: "bams-be47a-instance"
           # schemaValidation: "STRICT"     # STRICT mode makes Postgres schema match Data Connect exactly.
           # schemaValidation: "COMPATIBLE" # COMPATIBLE mode makes Postgres schema compatible with Data Connect.
 connectorDirs: ["./example"]

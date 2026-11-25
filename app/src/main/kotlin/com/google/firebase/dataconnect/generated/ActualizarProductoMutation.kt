@@ -25,7 +25,7 @@ public interface ActualizarProductoMutation :
     @kotlinx.serialization.Serializable
   public data class Variables(
   
-    val id: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
+    val id: Int,
   
     val nombreProducto: String,
   
@@ -44,7 +44,7 @@ public interface ActualizarProductoMutation :
       
       @BuilderDsl
       public interface Builder {
-        public var id: java.util.UUID
+        public var id: Int
         public var nombreProducto: String
         public var descripcionProducto: String?
         public var precioProducto: Double
@@ -56,7 +56,7 @@ public interface ActualizarProductoMutation :
         
         @Suppress("NAME_SHADOWING")
         public fun build(
-          id: java.util.UUID,nombreProducto: String,precioProducto: Double,
+          id: Int,nombreProducto: String,precioProducto: Double,
           block_: Builder.() -> Unit
         ): Variables {
           var id= id
@@ -69,7 +69,7 @@ public interface ActualizarProductoMutation :
             
 
           return object : Builder {
-            override var id: java.util.UUID
+            override var id: Int
               get() = throw UnsupportedOperationException("getting builder values is not supported")
               set(value_) { id = value_ }
               
@@ -127,7 +127,7 @@ public interface ActualizarProductoMutation :
 
 public fun ActualizarProductoMutation.ref(
   
-    id: java.util.UUID,nombreProducto: String,precioProducto: Double,
+    id: Int,nombreProducto: String,precioProducto: Double,
 
   
     block_: ActualizarProductoMutation.Variables.Builder.() -> Unit = {}
@@ -150,7 +150,7 @@ public suspend fun ActualizarProductoMutation.execute(
 
   
     
-      id: java.util.UUID,nombreProducto: String,precioProducto: Double,
+      id: Int,nombreProducto: String,precioProducto: Double,
 
   
     block_: ActualizarProductoMutation.Variables.Builder.() -> Unit = {}

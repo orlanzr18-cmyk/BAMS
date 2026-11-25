@@ -21,6 +21,8 @@ public interface ExampleConnector : com.google.firebase.dataconnect.generated.Ge
   
     public val actualizarProducto: ActualizarProductoMutation
   
+    public val agregarDetalleVenta: AgregarDetalleVentaMutation
+  
     public val ajustarInventario: AjustarInventarioMutation
   
     public val buscarProductoPorCodigo: BuscarProductoPorCodigoQuery
@@ -34,6 +36,8 @@ public interface ExampleConnector : com.google.firebase.dataconnect.generated.Ge
     public val crearUsuario: CrearUsuarioMutation
   
     public val crearVenta: CrearVentaMutation
+  
+    public val detalleDeVenta: DetalleDeVentaQuery
   
     public val eliminarProducto: EliminarProductoMutation
   
@@ -51,7 +55,7 @@ public interface ExampleConnector : com.google.firebase.dataconnect.generated.Ge
     public val config: com.google.firebase.dataconnect.ConnectorConfig = com.google.firebase.dataconnect.ConnectorConfig(
       connector = "example",
       location = "us-east4",
-      serviceId = "bams-30596-2-service",
+      serviceId = "bams-be47a-3-service",
     )
 
     public fun getInstance(
@@ -103,6 +107,10 @@ private class ExampleConnectorImpl(
       ActualizarProductoMutationImpl(this)
     }
   
+    override val agregarDetalleVenta by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      AgregarDetalleVentaMutationImpl(this)
+    }
+  
     override val ajustarInventario by lazy(LazyThreadSafetyMode.PUBLICATION) {
       AjustarInventarioMutationImpl(this)
     }
@@ -129,6 +137,10 @@ private class ExampleConnectorImpl(
   
     override val crearVenta by lazy(LazyThreadSafetyMode.PUBLICATION) {
       CrearVentaMutationImpl(this)
+    }
+  
+    override val detalleDeVenta by lazy(LazyThreadSafetyMode.PUBLICATION) {
+      DetalleDeVentaQueryImpl(this)
     }
   
     override val eliminarProducto by lazy(LazyThreadSafetyMode.PUBLICATION) {
@@ -160,6 +172,7 @@ private class ExampleConnectorImpl(
   override fun mutations(): List<com.google.firebase.dataconnect.generated.GeneratedMutation<ExampleConnector, *, *>> =
     listOf(
       actualizarProducto,
+        agregarDetalleVenta,
         ajustarInventario,
         crearCliente,
         crearInventario,
@@ -174,6 +187,7 @@ private class ExampleConnectorImpl(
   override fun queries(): List<com.google.firebase.dataconnect.generated.GeneratedQuery<ExampleConnector, *, *>> =
     listOf(
       buscarProductoPorCodigo,
+        detalleDeVenta,
         listarClientes,
         listarInventario,
         listarProductos,
@@ -328,6 +342,21 @@ private class ActualizarProductoMutationImpl(
   )
 
 
+private class AgregarDetalleVentaMutationImpl(
+  connector: ExampleConnector
+):
+  AgregarDetalleVentaMutation,
+  ExampleConnectorGeneratedMutationImpl<
+      AgregarDetalleVentaMutation.Data,
+      AgregarDetalleVentaMutation.Variables
+  >(
+    connector,
+    AgregarDetalleVentaMutation.Companion.operationName,
+    AgregarDetalleVentaMutation.Companion.dataDeserializer,
+    AgregarDetalleVentaMutation.Companion.variablesSerializer,
+  )
+
+
 private class AjustarInventarioMutationImpl(
   connector: ExampleConnector
 ):
@@ -430,6 +459,21 @@ private class CrearVentaMutationImpl(
     CrearVentaMutation.Companion.operationName,
     CrearVentaMutation.Companion.dataDeserializer,
     CrearVentaMutation.Companion.variablesSerializer,
+  )
+
+
+private class DetalleDeVentaQueryImpl(
+  connector: ExampleConnector
+):
+  DetalleDeVentaQuery,
+  ExampleConnectorGeneratedQueryImpl<
+      DetalleDeVentaQuery.Data,
+      DetalleDeVentaQuery.Variables
+  >(
+    connector,
+    DetalleDeVentaQuery.Companion.operationName,
+    DetalleDeVentaQuery.Companion.dataDeserializer,
+    DetalleDeVentaQuery.Companion.variablesSerializer,
   )
 
 

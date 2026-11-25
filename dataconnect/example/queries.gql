@@ -25,23 +25,30 @@ query ListarClientes @auth(level: PUBLIC) {
   }
 }
 
-query ListarVentas @auth(level: PUBLIC) {
-  ventas(orderBy: { fecha: DESC }) {
-    id
-    nombreVenta
-    cantidad
-    precioHistorico
-    fecha
-    usuario { usuario }
-    cliente { nombreCliente }
-    producto { nombreProducto }
-  }
-}
-
 query ListarInventario @auth(level: PUBLIC) {
   inventarios {
     id
     cantidad
     producto { id nombreProducto codigoBarra }
+  }
+}
+
+query ListarVentas @auth(level: PUBLIC) {
+  ventas(orderBy: { fecha: DESC }) {
+    id
+    nombreVenta
+    total
+    fecha
+    usuario { usuario }
+    cliente { nombreCliente }
+  }
+}
+
+query DetalleDeVenta($ventaId: Int!) @auth(level: PUBLIC) {
+  detalleVentas(where: { venta: { id: { eq: $ventaId } } }) {
+    id
+    cantidad
+    precioHistorico
+    producto { id nombreProducto }
   }
 }

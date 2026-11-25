@@ -38,21 +38,17 @@ public interface ListarVentasQuery :
         @kotlinx.serialization.Serializable
   public data class VentasItem(
   
-    val id: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.UUIDSerializer::class) java.util.UUID,
+    val id: Int,
   
     val nombreVenta: String,
   
-    val cantidad: Int,
-  
-    val precioHistorico: Double,
+    val total: Double,
   
     val fecha: @kotlinx.serialization.Serializable(with = com.google.firebase.dataconnect.serializers.TimestampSerializer::class) com.google.firebase.Timestamp,
   
     val usuario: Usuario,
   
     val cliente: Cliente,
-  
-    val producto: Producto,
   
   ) {
     
@@ -71,16 +67,6 @@ public interface ListarVentasQuery :
   public data class Cliente(
   
     val nombreCliente: String,
-  
-  ) {
-    
-    
-  }
-      
-        @kotlinx.serialization.Serializable
-  public data class Producto(
-  
-    val nombreProducto: String,
   
   ) {
     
