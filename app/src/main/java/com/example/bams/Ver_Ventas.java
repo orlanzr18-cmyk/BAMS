@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +24,6 @@ public class Ver_Ventas extends AppCompatActivity {
 
     GridView gvVentas;
     TextView tvSinVentas, tvTotalProductos, tvTotalGanado;
-    Button btnVolver;
 
     ArrayList<VentaItem> ventas = new ArrayList<>();
     int totalProductos = 0;
@@ -40,9 +38,6 @@ public class Ver_Ventas extends AppCompatActivity {
         tvSinVentas = findViewById(R.id.tvSinVentas);
         tvTotalProductos = findViewById(R.id.tvTotalProductos);
         tvTotalGanado = findViewById(R.id.tvTotalGanado);
-        btnVolver = findViewById(R.id.btnVolver);
-
-        btnVolver.setOnClickListener(v -> finish());
 
         // Tocar una venta abre el detalle
         gvVentas.setOnItemClickListener((parent, view, position, id) -> {
@@ -58,6 +53,11 @@ public class Ver_Ventas extends AppCompatActivity {
         });
 
         cargarVentas();
+    }
+
+    // ---------- BOTONES (onClick del XML) ----------
+    public void volver(View v) {
+        finish();
     }
 
     // ---------- CARGAR ----------

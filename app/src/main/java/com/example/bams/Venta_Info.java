@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +20,6 @@ public class Venta_Info extends AppCompatActivity {
 
     TextView tvNumeroVenta, tvCliente, tvFecha, tvTotalVenta;
     GridView gvProductosVenta;
-    Button btnVolver, btnCerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +31,6 @@ public class Venta_Info extends AppCompatActivity {
         tvFecha = findViewById(R.id.tvFecha);
         tvTotalVenta = findViewById(R.id.tvTotalVenta);
         gvProductosVenta = findViewById(R.id.gvProductosVenta);
-        btnVolver = findViewById(R.id.btnVolver);
-        btnCerrar = findViewById(R.id.btnCerrar);
-
-        btnVolver.setOnClickListener(v -> finish());
-        btnCerrar.setOnClickListener(v -> finish());
 
         // Datos que manda Ver_Ventas
         int ventaId = getIntent().getIntExtra("venta_id", -1);
@@ -57,6 +50,11 @@ public class Venta_Info extends AppCompatActivity {
         tvTotalVenta.setText(String.format(Locale.US, "L %.2f", total));
 
         cargarDetalle(ventaId);
+    }
+
+    // ---------- BOTONES (onClick del XML) ----------
+    public void volver(View v) {
+        finish();
     }
 
     // ---------- PRODUCTOS DE LA VENTA ----------

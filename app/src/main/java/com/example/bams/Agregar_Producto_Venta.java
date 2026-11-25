@@ -7,7 +7,6 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +19,7 @@ import java.util.Locale;
 public class Agregar_Producto_Venta extends AppCompatActivity {
 
     EditText txtBuscar, txtCantidad, txtprecio, txtTotal;
-    TextView tvNombreProducto, tvMarcaProducto, tvStockProducto;
-    Button btnBuscar, btnAgregar, btnCancelar, btnVolver;
+    TextView tvNombreProducto, tvStockProducto;
 
     ProductoItem seleccionado = null;
 
@@ -36,18 +34,12 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
         txtTotal = findViewById(R.id.txtTotal);
         tvNombreProducto = findViewById(R.id.tvNombreProducto);
         tvStockProducto = findViewById(R.id.tvStockProducto);
-        btnBuscar = findViewById(R.id.btnBuscar);
-        btnAgregar = findViewById(R.id.btnAgregar);
-        btnCancelar = findViewById(R.id.btnCancelar);
-        btnVolver = findViewById(R.id.btnVolver);
 
         // Por ahora no se maneja stock
         tvStockProducto.setVisibility(View.GONE);
 
         // El lector de código de barras escribe en este campo
         txtBuscar.requestFocus();
-
-        btnBuscar.setOnClickListener(v -> buscarProducto());
 
         // Enter del teclado o del lector de código de barras
         txtBuscar.setOnEditorActionListener((v, actionId, event) -> {
@@ -76,15 +68,22 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
+    }
 
-        btnAgregar.setOnClickListener(v -> {
-            if (validar()) {
-                agregarProducto();
-            }
-        });
+    // ---------- BOTONES (onClick del XML) ----------
+    public void volver(View v) {
+        setResult(RESULT_CANCELED);
+        finish();
+    }
 
-        btnCancelar.setOnClickListener(v -> cancelar());
-        btnVolver.setOnClickListener(v -> cancelar());
+    public void buscar(View v) {
+        buscarProducto();
+    }
+
+    public void agregar(View v) {
+        if (validar()) {
+            agregarProducto();
+        }
     }
 
     // ---------- BUSCAR ----------
@@ -209,11 +208,6 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
         resultado.putExtra("precio", seleccionado.getPrecio());
         resultado.putExtra("total", total);
         setResult(RESULT_OK, resultado);
-        finish();
-    }
-
-    private void cancelar() {
-        setResult(RESULT_CANCELED);
         finish();
     }
 }
