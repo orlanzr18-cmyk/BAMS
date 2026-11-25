@@ -106,18 +106,22 @@ public class Modificar_Producto extends AppCompatActivity {
         String precioTxt = txtPrecio.getText().toString().trim();
         String stockTxt = txtStock.getText().toString().trim();
 
-        if (nombre.isEmpty() || precioTxt.isEmpty() || stockTxt.isEmpty()) {
-            Toast.makeText(this, "Nombre, precio y stock son obligatorios", Toast.LENGTH_SHORT).show();
+        Validacion validar = new Validacion();
+        boolean nombreOk = validar.vacio(txtNombre, "El nombre es obligatorio");
+        boolean precioOk = validar.mayorACero(txtPrecio, "El precio es obligatorio", "El precio debe ser mayor a cero");
+        boolean stockOk = validar.vacio(txtStock, "El stock es obligatorio");
+
+        if (!nombreOk || !precioOk || !stockOk) {
             return;
         }
 
         double precio;
         int stock;
         try {
-            precio = Double.parseDouble(precioTxt);
+            precio = Double.parseDouble(precioTxt.replace(",", "."));
             stock = Integer.parseInt(stockTxt);
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Precio o stock invalido", Toast.LENGTH_SHORT).show();
+            txtStock.setError("Ingrese un numero entero valido");
             return;
         }
 
