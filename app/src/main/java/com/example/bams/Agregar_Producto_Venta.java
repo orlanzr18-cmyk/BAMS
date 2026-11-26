@@ -23,6 +23,8 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
 
     ProductoItem seleccionado = null;
 
+    Validacion val = new Validacion();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,8 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
         txtTotal = findViewById(R.id.txtTotal);
         tvNombreProducto = findViewById(R.id.tvNombreProducto);
         tvStockProducto = findViewById(R.id.tvStockProducto);
+
+
 
         // Por ahora no se maneja stock
         tvStockProducto.setVisibility(View.GONE);
@@ -88,12 +92,11 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
 
     // ---------- BUSCAR ----------
     private void buscarProducto() {
-        String texto = txtBuscar.getText().toString().trim();
-
-        if (texto.isEmpty()) {
-            txtBuscar.setError("EL CAMPO BUSCAR NO PUEDE ESTAR VACIO");
+        if (!val.vacio(txtBuscar, "EL CAMPO BUSCAR NO PUEDE ESTAR VACIO")) {
             return;
         }
+
+        String texto = txtBuscar.getText().toString().trim();
 
         // 1. Se busca por código de barras
         BamsDatos.buscarProductoPorCodigo(texto, new Resultado<List<ProductoItem>>() {
@@ -176,19 +179,13 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
 
         boolean retorno = true;
 
-        String cantidad = txtCantidad.getText().toString();
+        if (!val.seleccionado(txtBuscar, seleccionado, "PRIMERO BUSCA UN PRODUCTO")) {
+            retorno = false;
+        }
 
-        if (seleccionado == null) {
-            txtBuscar.setError("PRIMERO BUSCA UN PRODUCTO");
+        if (!val.mayorACero(txtCantidad, "LA CANTIDAD NO PUEDE ESTAR VACIA", "LA CANTIDAD DEBE SER MAYOR QUE 0")) {
             retorno = false;
-        } else if (cantidad.isEmpty()) {
-            txtCantidad.setError("LA CANTIDAD NO PUEDE ESTAR VACIA");
-            retorno = false;
-        } else if (cantidad.length() > 6) {
-            txtCantidad.setError("CANTIDAD DEMASIADO GRANDE");
-            retorno = false;
-        } else if (Integer.parseInt(cantidad) <= 0) {
-            txtCantidad.setError("LA CANTIDAD DEBE SER MAYOR QUE 0");
+        } else if (!val.maximoDigitos(txtCantidad, 6, "CANTIDAD DEMASIADO GRANDE")) {
             retorno = false;
         }
 

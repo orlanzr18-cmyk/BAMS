@@ -28,6 +28,7 @@ public class Registrar_Ventas extends AppCompatActivity {
     GridView gvProductosVenta;
     TextView tvSinProductos, tvTotalVenta;
     Button btnRegistrarVenta;
+    Validacion val = new Validacion();
 
     ArrayList<LineaVenta> lineas = new ArrayList<>();
     ArrayList<String> nombres = new ArrayList<>();
@@ -156,10 +157,7 @@ public class Registrar_Ventas extends AppCompatActivity {
 
         boolean retorno = true;
 
-        String cliente = txtcliente.getText().toString().trim();
-
-        if (cliente.isEmpty()) {
-            txtcliente.setError("EL CLIENTE NO PUEDE ESTAR VACIO");
+        if (!val.vacio(txtcliente, "EL CLIENTE NO PUEDE ESTAR VACIO")) {
             retorno = false;
         }
 

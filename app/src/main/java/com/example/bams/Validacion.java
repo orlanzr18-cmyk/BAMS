@@ -38,4 +38,24 @@ public  class Validacion {
         }
     }
 
+    public boolean seleccionado(EditText campo, Object objeto, String mensaje) {
+        if (objeto == null) {
+            campo.setError(mensaje);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean maximoDigitos(EditText campo, int maximo, String mensaje) {
+        if (campo == null) {
+            return false;
+        }
+        String texto = campo.getText().toString().trim();
+        if (texto.length() > maximo) {
+            campo.setError(mensaje);
+            return false;
+        }
+        return true;
+    }
+
 }
