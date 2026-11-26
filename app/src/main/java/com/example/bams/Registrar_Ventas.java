@@ -17,6 +17,10 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +56,15 @@ public class Registrar_Ventas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_ventas);
+
+        View raiz = findViewById(R.id.main);
+        int pl = raiz.getPaddingLeft(), pt = raiz.getPaddingTop();
+        int pr = raiz.getPaddingRight(), pb = raiz.getPaddingBottom();
+        ViewCompat.setOnApplyWindowInsetsListener(raiz, (v, insets) -> {
+            Insets barras = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(pl + barras.left, pt + barras.top, pr + barras.right, pb + barras.bottom);
+            return insets;
+        });
 
         txtcliente = findViewById(R.id.txtcliente);
         gvProductosVenta = findViewById(R.id.gvProductosVenta);

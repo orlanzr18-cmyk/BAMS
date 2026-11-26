@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,15 @@ public class Venta_Info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venta_info);
+
+        View raiz = findViewById(R.id.main);
+        int pl = raiz.getPaddingLeft(), pt = raiz.getPaddingTop();
+        int pr = raiz.getPaddingRight(), pb = raiz.getPaddingBottom();
+        ViewCompat.setOnApplyWindowInsetsListener(raiz, (v, insets) -> {
+            Insets barras = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(pl + barras.left, pt + barras.top, pr + barras.right, pb + barras.bottom);
+            return insets;
+        });
 
         tvNumeroVenta = findViewById(R.id.tvNumeroVenta);
         tvCliente = findViewById(R.id.tvCliente);

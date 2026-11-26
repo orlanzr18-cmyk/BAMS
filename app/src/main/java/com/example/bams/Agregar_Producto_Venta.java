@@ -14,6 +14,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +40,15 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_producto_venta);
+
+        View raiz = findViewById(R.id.main);
+        int pl = raiz.getPaddingLeft(), pt = raiz.getPaddingTop();
+        int pr = raiz.getPaddingRight(), pb = raiz.getPaddingBottom();
+        ViewCompat.setOnApplyWindowInsetsListener(raiz, (v, insets) -> {
+            Insets barras = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(pl + barras.left, pt + barras.top, pr + barras.right, pb + barras.bottom);
+            return insets;
+        });
 
         txtBuscar = findViewById(R.id.txtBuscar);
         txtCantidad = findViewById(R.id.txtCantidad);
