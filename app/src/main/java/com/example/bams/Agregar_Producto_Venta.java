@@ -1,26 +1,34 @@
 package com.example.bams;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class Agregar_Producto_Venta extends AppCompatActivity {
 
-    EditText txtBuscar, txtCantidad, txtprecio, txtTotal;
+    AutoCompleteTextView txtBuscar;
+    EditText txtCantidad, txtprecio, txtTotal;
     TextView tvNombreProducto, tvStockProducto;
 
+    List<ProductoItem> productos = new ArrayList<>();
     ProductoItem seleccionado = null;
 
     Validacion val = new Validacion();
@@ -37,13 +45,25 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
         tvNombreProducto = findViewById(R.id.tvNombreProducto);
         tvStockProducto = findViewById(R.id.tvStockProducto);
 
-
-
         // Por ahora no se maneja stock
         tvStockProducto.setVisibility(View.GONE);
 
         // El lector de código de barras escribe en este campo
         txtBuscar.requestFocus();
+
+        cargarSugerencias();
+        txtBuscar.setOnClickListener(v -> txtBuscar.showDropDown());
+
+        // Al tocar una sugerencia se selecciona ese producto
+        txtBuscar.setOnItemClickListener((parent, view, position, id) -> {
+            String nombre = (String) parent.getItemAtPosition(position);
+            for (ProductoItem p : productos) {
+                if (p.getNombre().equals(nombre)) {
+                    mostrarProducto(p);
+                    break;
+                }
+            }
+        });
 
         // Enter del teclado o del lector de código de barras
         txtBuscar.setOnEditorActionListener((v, actionId, event) -> {
@@ -90,6 +110,41 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
         }
     }
 
+    // ---------- SUGERENCIAS ----------
+    // Carga los productos de la base de datos para la lista que sale al escribir
+    private void cargarSugerencias() {
+        BamsDatos.listarProductos(new Resultado<List<ProductoItem>>() {
+            @Override
+            public void onExito(List<ProductoItem> dato) {
+                productos = dato;
+
+                ArrayList<String> nombres = new ArrayList<>();
+                for (ProductoItem p : dato) {
+                    nombres.add(p.getNombre());
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                        Agregar_Producto_Venta.this,
+                        android.R.layout.simple_dropdown_item_1line, nombres) {
+                    @NonNull
+                    @Override
+                    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+                        TextView t = (TextView) super.getView(position, convertView, parent);
+                        t.setTextColor(Color.parseColor("#072C5A"));
+                        return t;
+                    }
+                };
+
+                txtBuscar.setAdapter(adapter);
+            }
+
+            @Override
+            public void onError(String mensaje) {
+                Toast.makeText(Agregar_Producto_Venta.this, mensaje, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     // ---------- BUSCAR ----------
     private void buscarProducto() {
         if (!val.vacio(txtBuscar, "EL CAMPO BUSCAR NO PUEDE ESTAR VACIO")) {
@@ -118,25 +173,14 @@ public class Agregar_Producto_Venta extends AppCompatActivity {
 
     // 2. Si no hay código igual, se busca por nombre
     private void buscarPorNombre(String texto) {
-        BamsDatos.listarProductos(new Resultado<List<ProductoItem>>() {
-            @Override
-            public void onExito(List<ProductoItem> dato) {
-                for (ProductoItem p : dato) {
-                    if (p.getNombre().toLowerCase().contains(texto.toLowerCase())) {
-                        mostrarProducto(p);
-                        return;
-                    }
-                }
-                limpiarSeleccion();
-                Toast.makeText(Agregar_Producto_Venta.this,
-                        "No se encontró ningún producto", Toast.LENGTH_SHORT).show();
+        for (ProductoItem p : productos) {
+            if (p.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+                mostrarProducto(p);
+                return;
             }
-
-            @Override
-            public void onError(String mensaje) {
-                Toast.makeText(Agregar_Producto_Venta.this, mensaje, Toast.LENGTH_LONG).show();
-            }
-        });
+        }
+        limpiarSeleccion();
+        Toast.makeText(this, "No se encontró ningún producto", Toast.LENGTH_SHORT).show();
     }
 
     private void mostrarProducto(ProductoItem p) {

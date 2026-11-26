@@ -65,18 +65,20 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/txtBuscar"
                 android:layout_width="0dp"
                 android:layout_height="52dp"
                 android:layout_weight="1"
                 android:background="#FFFFFF"
+                android:completionThreshold="1"
                 android:hint="Nombre o código de barras"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+                android:popupBackground="#FFFFFF"
                 android:textColor="#072C5A"
                 android:textColorHint="#5A6F8F"
                 android:textSize="16sp" />
